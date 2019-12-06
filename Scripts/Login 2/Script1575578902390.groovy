@@ -16,15 +16,19 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-WebUI.openBrowser('')
+WebUI.openBrowser('http://blazedemo.com/login', FailureHandling.STOP_ON_FAILURE)
 
-WebUI.navigateToUrl('http://blazedemo.com/')
+WebUI.setText(findTestObject('Register Page/Name Input'), 'john.doe@johndoe.cl', FailureHandling.STOP_ON_FAILURE)
 
-WebUI.click(findTestObject('null'))
+WebUI.setText(findTestObject('Login Page/Password Input', [('variable') : '123123']), '123456', FailureHandling.STOP_ON_FAILURE)
 
-WebUI.click(findTestObject('null'))
+WebUI.click(findTestObject('Login Page/Remember Input'), FailureHandling.STOP_ON_FAILURE)
 
-WebUI.click(findTestObject('null'))
+WebUI.click(findTestObject('Login Page/Login Button'))
 
-WebUI.closeBrowser()
+WebUI.waitForPageLoad(50)
+
+WebUI.click(findTestObject('Login Page/Logged Page/Div You are logged in'), FailureHandling.STOP_ON_FAILURE)
+
+WebUI.closeBrowser(FailureHandling.STOP_ON_FAILURE)
 

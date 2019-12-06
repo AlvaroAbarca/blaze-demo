@@ -16,19 +16,21 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-WebUI.openBrowser('http://blazedemo.com/login')
+WebUI.openBrowser('http://blazedemo.com/register')
 
-WebUI.setText(findTestObject('Login Page/Email Input', [('variable') : 'john.doe@johndoe.cl']), GlobalVariable.email)
+WebUI.setText(findTestObject('Register Page/Name Input'), 'John Doe')
 
-WebUI.setText(findTestObject('Login Page/Password Input', [('variable') : '123123']), GlobalVariable.password)
+WebUI.setText(findTestObject('Register Page/Company Input'), 'John Doe Inc.')
 
-WebUI.click(findTestObject('Login Page/Remember Input'))
+WebUI.setText(findTestObject('Login Page/Email Input'), 'john.doe@johndoe.cl')
 
-WebUI.click(findTestObject('Login Page/Login Button'))
+WebUI.setText(findTestObject('Register Page/Password Input'), '123123')
+
+WebUI.setText(findTestObject('Register Page/Confirm Password Input'), '1231234')
+
+WebUI.click(findTestObject('Register Page/Register Button'))
 
 WebUI.waitForPageLoad(50)
-
-WebUI.getText(findTestObject('Login Page/Logged Page/Div You are logged in'))
 
 WebUI.closeBrowser()
 
